@@ -7,7 +7,8 @@ Spree::Taxon.class_eval do
           :access_key_id     => ENV['S3_KEY'],
           :secret_access_key => ENV['S3_SECRET']
         },
-        :bucket => ENV['S3_BUCKET']
+        :bucket => ENV['S3_BUCKET'],
+        :s3_protocol => 'https'
       }
     else
       S3_OPTIONS = {
