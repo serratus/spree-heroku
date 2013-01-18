@@ -1,13 +1,13 @@
 Spree::Image.class_eval do
   if Rails.env.production?
-    if ENV['S3_KEY'] && ENV['S3_SECRET'] && ENV['S3_BUCKET']
+    if ENV['AWS_ACCESS_KEY_ID'] && ENV['AWS_SECRET_ACCESS_KEY'] && ENV['AWS_BUCKET']
       S3_OPTIONS = {
         :storage => 's3',
         :s3_credentials => {
-          :access_key_id     => ENV['S3_KEY'],
-          :secret_access_key => ENV['S3_SECRET']
+          :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
+          :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+          :bucket => ENV['AWS_BUCKET']
         },
-        :bucket => ENV['S3_BUCKET'],
         :s3_protocol => 'https'
       }
     else
